@@ -40,8 +40,10 @@ function App() {
   let displayShows = shows;
   if (filterByRating) {
     displayShows = displayShows.filter((s) => {
-      s.rating.average >= filterByRating;
+      return s.rating.average >= filterByRating;
     });
+  } else if (searchTerm){
+    displayShows = displayShows.filter(show=> show.name.toLowerCase().includes(searchTerm))
   }
 
   return (
